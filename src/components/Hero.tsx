@@ -1,13 +1,17 @@
 import heroImg from "../assets/zovix-hero.jpg";
+import heroMobileImg from "../assets/zovix-hero-mobile.jpg";
 
 export default function Hero() {
   return (
     <section id="top" className="relative overflow-hidden bg-[#2b2118]">
-      <img
-        src={heroImg}
-        alt="ZOVIX Organic Cold Press Hair Oil — bottle and premium box"
-        className="h-[82vh] min-h-[540px] w-full object-cover"
-      />
+      <picture>
+        <source media="(max-width: 767px)" srcSet={heroMobileImg} />
+        <img
+          src={heroImg}
+          alt="ZOVIX Organic Cold Press Hair Oil — bottle and premium box"
+          className="h-[72vh] min-h-[500px] w-full object-cover md:h-[82vh] md:min-h-[540px]"
+        />
+      </picture>
       <div className="absolute inset-0 bg-gradient-to-t from-[#17100a]/95 via-[#17100a]/35 to-transparent" />
       <div className="absolute inset-x-0 bottom-0">
         <div className="mx-auto max-w-4xl px-4 pb-12 text-center md:pb-16">
