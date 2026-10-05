@@ -2,10 +2,10 @@ import { useState } from "react";
 import { WHATSAPP_DISPLAY } from "../lib/supabase";
 
 const LINKS = [
-  { label: "Benefits", href: "#benefits" },
+  { label: "Fayde", href: "#benefits" },
   { label: "Bundles", href: "#bundles" },
   { label: "Order", href: "#order" },
-  { label: "FAQ", href: "#faq" },
+  { label: "FAQs", href: "#faq" },
 ];
 
 export default function Navbar() {
@@ -54,7 +54,7 @@ export default function Navbar() {
             href="#order"
             className="rounded-full bg-[#2b2118] px-5 py-2 text-sm font-semibold text-white hover:bg-[#b98a2f]"
           >
-            Shop Now
+            Order Karein
           </a>
         </div>
       </div>

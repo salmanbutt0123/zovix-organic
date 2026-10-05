@@ -2,24 +2,24 @@ import { useState } from "react";
 
 const FAQS = [
   {
-    q: "How long does delivery take?",
-    a: "Usually 2–4 working days, anywhere in Pakistan.",
+    q: "Delivery mein kitna waqt lagta hai?",
+    a: "Aam tor par Pakistan bhar mein 2–4 working days.",
   },
   {
-    q: "Is Cash on Delivery available?",
-    a: "Yes. Pay in cash when your parcel arrives.",
+    q: "Kya Cash on Delivery available hai?",
+    a: "Jee haan. Parcel milne par cash mein payment karein.",
   },
   {
-    q: "Which hair types is it for?",
-    a: "ZOVIX can be used in the routine care of all hair types. Always patch-test before first use.",
+    q: "Ye kin baalon ke liye hai?",
+    a: "ZOVIX tamam hair types ki routine care mein istemaal ho sakta hai. Pehli dafa istemaal se pehle patch-test zaroor karein.",
   },
   {
-    q: "How do I order?",
-    a: "Tap the WhatsApp order button or submit your details in the website form.",
+    q: "Order kaise karein?",
+    a: "WhatsApp order button dabayein ya website form mein apni details likhein.",
   },
   {
-    q: "What if my parcel arrives damaged?",
-    a: "Share an unboxing video or clear photo proof — a damaged parcel will be replaced free.",
+    q: "Agar parcel toota-phoota aaye to?",
+    a: "Unboxing video ya wazeh tasveer bhej dein — toota-phoota parcel muft replace hoga.",
   },
 ];
 
@@ -29,14 +29,14 @@ export default function Faq() {
     <section id="faq" className="bg-white py-14">
       <div className="mx-auto max-w-3xl px-4">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#8f6a1f]">
-          Common questions
+          Aam sawalat
         </p>
         <h2 className="font-serif mt-3 text-3xl font-medium md:text-4xl">
-          What to know before you order.
+          Order karne se pehle jaan lein.
         </h2>
         <p className="mt-3 text-sm text-[#5c4f3d]">
-          External use only. Patch-test before first use. Stop use if irritation occurs. Individual
-          results vary.
+          Sirf bahar se lagane ke liye. Pehli dafa istemaal se pehle patch-test karein. Agar jalan
+          ho to istemaal rok dein. Nataij har shakhs ke liye mukhtalif ho sakte hain.
         </p>
         <div className="mt-8 divide-y divide-[#e8dfcd] rounded-2xl border border-[#e8dfcd] bg-[#faf7f1]">
           {FAQS.map((f, i) => (

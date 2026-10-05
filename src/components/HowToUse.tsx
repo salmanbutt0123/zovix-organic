@@ -2,18 +2,18 @@ import lifestyleImg from "../assets/zovix-lifestyle.webp";
 const STEPS = [
   {
     n: "01",
-    title: "Warm it lightly",
-    body: "Take a little oil and warm it gently — never overheat.",
+    title: "Halka neem garam karein",
+    body: "Thoda sa oil lein aur halka neem garam karein — zyada garam na karein.",
   },
   {
     n: "02",
-    title: "5-minute massage",
-    body: "Massage gently into the scalp and roots with your fingertips for 5 minutes.",
+    title: "5 minute ka massage",
+    body: "Ungliyon ke poron se 5 minute tak scalp aur jaron mein narmi se massage karein.",
   },
   {
     n: "03",
-    title: "Leave for 2+ hours",
-    body: "Leave on for at least 2 hours or overnight, then wash with your regular shampoo.",
+    title: "2+ ghante laga rehne dein",
+    body: "Kam az kam 2 ghante ya raat bhar laga rehne dein, phir apne normal shampoo se dho lein.",
   },
 ];
 
@@ -31,12 +31,12 @@ export default function HowToUse() {
           </div>
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#8f6a1f]">
-              How to use
+              Istemaal ka tareeqa
             </p>
-            <h2 className="font-serif mt-3 text-3xl font-medium md:text-4xl">Three simple steps.</h2>
+            <h2 className="font-serif mt-3 text-3xl font-medium md:text-4xl">Sirf 3 asaan steps.</h2>
             <p className="mt-3 max-w-md text-[15px] text-[#5c4f3d]">
-              For best results, use regularly as part of your routine. Use within 12 months of
-              opening.
+              Behtareen nataij ke liye apni routine ka hissa bana kar baqaida istemaal karein.
+              Khulne ke 12 mah ke andar istemaal karein.
             </p>
             <div className="mt-8 space-y-4">
               {STEPS.map((s) => (

@@ -2,23 +2,23 @@ import textureImg from "../assets/zovix-oil-texture.webp";
 const BENEFITS = [
   {
     n: "01",
-    title: "Support healthy growth",
-    body: "Natural oils nourish the scalp and support a healthy growth routine.",
+    title: "Sehatmand growth",
+    body: "Qudrati oils scalp ko ghiza dete hain aur healthy growth routine mein madad karte hain.",
   },
   {
     n: "02",
-    title: "Strengthen roots",
-    body: "The cold-pressed formula helps protect roots and strands from everyday damage.",
+    title: "Mazboot jarein",
+    body: "Cold-pressed formula jaron aur baalon ko rozana ke nuqsan se bachane mein madad karta hai.",
   },
   {
     n: "03",
-    title: "Reduce hair fall",
-    body: "Regular massage improves scalp care and gives strength to weak hair.",
+    title: "Baal girna kam kare",
+    body: "Baqaida massage scalp ki dekhbhal behtar karta hai aur kamzor baalon ko taqat deta hai.",
   },
   {
     n: "04",
-    title: "Boost natural shine",
-    body: "Hair feels soft, manageable, and naturally lustrous — without a greasy finish.",
+    title: "Qudrati chamak",
+    body: "Baal naram, asaan aur qudrati chamakdar mehsoos hote hain — chipchipepan ke baghair.",
   },
 ];
 
@@ -29,13 +29,13 @@ export default function Benefits() {
         <div className="grid items-center gap-10 md:grid-cols-2">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#8f6a1f]">
-              18+ natural oils &amp; herbs
+              18+ qudrati oils &amp; herbs
             </p>
             <h2 className="font-serif mt-3 text-3xl font-medium md:text-4xl">
               Every drop has a purpose.
             </h2>
             <p className="mt-3 max-w-md text-[15px] text-[#5c4f3d]">
-              A focused formula with clear benefits. No empty claims — just a consistent hair-care
+              Wazeh faydon wala focused formula. Koi khokhle daway nahi — bas mustaqil hair-care
               routine.
             </p>
             <div className="mt-8 grid gap-4 sm:grid-cols-2">

@@ -8,17 +8,17 @@ const BUNDLES = [
     highlight: false,
   },
   {
-    tag: "Popular choice",
+    tag: "Sab se popular",
     title: "2 Bottles",
     price: "Rs 3,000",
-    note: "Save Rs 200",
+    note: "Rs 200 bachayein",
     highlight: true,
   },
   {
     tag: "Launch bundle",
     title: "Family Pack",
     price: "Rs 4,200",
-    note: "3 bottles · Save Rs 600",
+    note: "3 bottles · Rs 600 bachayein",
     highlight: false,
   },
 ];
@@ -32,9 +32,9 @@ export default function Bundles() {
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#8f6a1f]">
               Launch bundles
             </p>
-            <h2 className="font-serif mt-3 text-3xl font-medium md:text-4xl">Choose your pack.</h2>
+            <h2 className="font-serif mt-3 text-3xl font-medium md:text-4xl">Apna pack chunein.</h2>
             <p className="mt-3 text-[15px] text-[#5c4f3d]">
-              Free delivery and Cash on Delivery on every pack.
+              Har pack par FREE delivery aur Cash on Delivery.
             </p>
             <div className="mt-8 grid gap-4 sm:grid-cols-3">
               {BUNDLES.map((b) => (
@@ -66,7 +66,7 @@ export default function Bundles() {
                         : "bg-[#2b2118] text-white hover:bg-[#b98a2f]"
                     }`}
                   >
-                    Shop Now
+                    Order Karein
                   </a>
                 </div>
               ))}
