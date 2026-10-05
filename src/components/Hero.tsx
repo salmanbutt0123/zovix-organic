@@ -9,7 +9,7 @@ export default function Hero() {
         <img
           src={heroImg}
           alt="ZOVIX Organic Cold Press Hair Oil — bottle and premium box"
-          className="h-[72vh] min-h-[500px] w-full object-cover md:h-[82vh] md:min-h-[540px]"
+          className="h-[62vh] min-h-[440px] w-full object-cover md:h-[82vh] md:min-h-[540px]"
         />
       </picture>
       <div className="absolute inset-0 bg-gradient-to-t from-[#17100a]/95 via-[#17100a]/35 to-transparent" />
