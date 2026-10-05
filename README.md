@@ -37,3 +37,7 @@ and view incoming orders.
 
 Any static host works (Vercel, Netlify, Cloudflare Pages): build command `npm run build`,
 output dir `dist`.
+
+## Live site
+
+Production: https://zovix-organic.vercel.app (via Vercel)
