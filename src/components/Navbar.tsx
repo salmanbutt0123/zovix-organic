@@ -60,7 +60,7 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <nav className="border-t border-[#e8dfcd] bg-[#faf7f1] px-4 py-3 md:hidden">
+        <nav className="absolute inset-x-0 top-full border-b border-[#e8dfcd] bg-[#faf7f1]/85 px-4 py-3 shadow-lg backdrop-blur-md md:hidden">
           {LINKS.map((l) => (
             <a
               key={l.href}
