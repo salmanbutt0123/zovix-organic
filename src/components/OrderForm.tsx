@@ -89,7 +89,7 @@ export default function OrderForm() {
                 <button
                   type="button"
                   onClick={() => setQty(Math.max(1, qty - 1))}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-[#e8dfcd] bg-white text-xl font-bold hover:bg-[#f3ede1]"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-[#e8dfcd] bg-white text-xl font-bold transition-colors hover:bg-[#f3ede1]"
                   aria-label="Decrease quantity"
                 >
                   −
@@ -98,7 +98,7 @@ export default function OrderForm() {
                 <button
                   type="button"
                   onClick={() => setQty(Math.min(3, qty + 1))}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-[#e8dfcd] bg-white text-xl font-bold hover:bg-[#f3ede1]"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-[#e8dfcd] bg-white text-xl font-bold transition-colors hover:bg-[#f3ede1]"
                   aria-label="Increase quantity"
                 >
                   +
@@ -111,7 +111,7 @@ export default function OrderForm() {
             <button
               type="submit"
               disabled={status === "sending"}
-              className="mt-6 w-full rounded-full bg-[#b98a2f] py-4 text-lg font-semibold text-white hover:bg-[#8f6a1f] disabled:opacity-60"
+              className="mt-6 w-full rounded-full bg-[#b98a2f] py-4 text-lg font-semibold text-white transition-colors hover:bg-[#8f6a1f] disabled:opacity-60"
             >
               {status === "sending" ? "Order save ho raha hai…" : "Order Confirm Karein"}
             </button>

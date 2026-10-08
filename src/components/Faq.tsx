@@ -46,11 +46,23 @@ export default function Faq() {
                 className="flex w-full items-center justify-between gap-4 px-6 py-4 text-left font-semibold"
               >
                 <span>{f.q}</span>
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#f3ede1] text-lg leading-none text-[#b98a2f]">
-                  {open === i ? "−" : "+"}
+                <span
+                  className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#f3ede1] text-lg leading-none text-[#b98a2f] transition-transform duration-300 ease-in-out ${
+                    open === i ? "rotate-45" : ""
+                  }`}
+                >
+                  +
                 </span>
               </button>
-              {open === i && <p className="px-6 pb-5 text-[15px] text-[#5c4f3d]">{f.a}</p>}
+              <div
+                className={`grid transition-all duration-300 ease-in-out ${
+                  open === i ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                }`}
+              >
+                <div className="overflow-hidden">
+                  <p className="px-6 pb-5 text-[15px] text-[#5c4f3d]">{f.a}</p>
+                </div>
+              </div>
             </div>
           ))}
         </div>

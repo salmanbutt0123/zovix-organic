@@ -62,7 +62,7 @@ export default function Bundles() {
                     href="#order"
                     className={`mt-5 block rounded-full py-2.5 text-sm font-semibold ${
                       b.highlight
-                        ? "bg-[#b98a2f] text-white hover:bg-[#8f6a1f]"
+                        ? "bg-[#b98a2f] text-white transition-colors hover:bg-[#8f6a1f]"
                         : "bg-[#2b2118] text-white hover:bg-[#b98a2f]"
                     }`}
                   >

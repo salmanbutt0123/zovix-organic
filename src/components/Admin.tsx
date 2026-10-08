@@ -82,7 +82,7 @@ export default function Admin() {
         <h2 className="font-serif text-2xl font-semibold">Orders — ZOVIX</h2>
         <button
           onClick={load}
-          className="rounded-full border border-[#e8dfcd] px-5 py-2 text-sm font-semibold hover:bg-[#f3ede1]"
+          className="rounded-full border border-[#e8dfcd] px-5 py-2 text-sm font-semibold transition-colors hover:bg-[#f3ede1]"
         >
           Refresh
         </button>

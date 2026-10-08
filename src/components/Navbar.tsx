@@ -16,7 +16,7 @@ export default function Navbar() {
       <div className="mx-auto grid h-16 max-w-6xl grid-cols-[1fr_auto_1fr] items-center px-4">
         <div className="flex items-center">
           <button
-            className="rounded p-2 hover:bg-[#f3ede1] md:hidden"
+            className="rounded p-2 transition-colors hover:bg-[#f3ede1] md:hidden"
             onClick={() => setOpen(!open)}
             aria-label="Menu"
           >
@@ -26,7 +26,7 @@ export default function Navbar() {
           </button>
           <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
             {LINKS.map((l) => (
-              <a key={l.href} href={l.href} className="text-[#5c4f3d] hover:text-[#2b2118]">
+              <a key={l.href} href={l.href} className="text-[#5c4f3d] transition-colors hover:text-[#2b2118]">
                 {l.label}
               </a>
             ))}
@@ -52,27 +52,33 @@ export default function Navbar() {
           </a>
           <a
             href="#order"
-            className="rounded-full bg-[#2b2118] px-5 py-2 text-sm font-semibold text-white hover:bg-[#b98a2f]"
+            className="whitespace-nowrap rounded-full bg-[#2b2118] px-4 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-[#b98a2f] sm:px-5 sm:py-2 sm:text-sm"
           >
             Order Karein
           </a>
         </div>
       </div>
 
-      {open && (
-        <nav className="absolute inset-x-0 top-full border-b border-[#e8dfcd] bg-[#faf7f1]/85 px-4 py-3 shadow-lg backdrop-blur-md md:hidden">
-          {LINKS.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              onClick={() => setOpen(false)}
-              className="block py-2.5 text-[15px] font-medium text-[#5c4f3d]"
-            >
-              {l.label}
-            </a>
-          ))}
-        </nav>
-      )}
+      <nav
+        className={`absolute inset-x-0 top-full grid transition-all duration-300 ease-in-out md:hidden ${
+          open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+        }`}
+      >
+        <div className="overflow-hidden">
+          <div className="border-b border-[#e8dfcd] bg-[#faf7f1]/85 px-4 py-3 shadow-lg backdrop-blur-md">
+            {LINKS.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={() => setOpen(false)}
+                className="block py-2.5 text-[15px] font-medium text-[#5c4f3d]"
+              >
+                {l.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </nav>
     </header>
   );
 }

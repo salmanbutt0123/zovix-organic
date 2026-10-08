@@ -18,7 +18,7 @@ export default function FinalCta() {
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <a
               href="#order"
-              className="rounded-full bg-[#b98a2f] px-8 py-3 font-semibold text-white hover:bg-[#8f6a1f]"
+              className="rounded-full bg-[#b98a2f] px-8 py-3 font-semibold text-white transition-colors hover:bg-[#8f6a1f]"
             >
               Order Karein — Rs 1,600
             </a>
@@ -28,7 +28,7 @@ export default function FinalCta() {
               )}`}
               target="_blank"
               rel="noreferrer"
-              className="rounded-full border border-white/30 px-8 py-3 font-semibold text-white hover:bg-white hover:text-[#2b2118]"
+              className="rounded-full border border-white/30 px-8 py-3 font-semibold text-white transition-colors hover:bg-white hover:text-[#2b2118]"
             >
               WhatsApp: {WHATSAPP_DISPLAY}
             </a>
