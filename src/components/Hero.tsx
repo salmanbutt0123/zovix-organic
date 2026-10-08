@@ -28,7 +28,7 @@ export default function Hero() {
             href="#order"
             className="mt-5 inline-block rounded-full bg-[#e8c877] px-10 py-3.5 text-xs font-bold uppercase tracking-[0.25em] text-[#17100a] transition hover:bg-[#f4d98c] md:mt-7"
           >
-            Abhi Order Karein
+            Order Now
           </a>
         </div>
       </div>
@@ -36,11 +36,11 @@ export default function Hero() {
       {/* Eyebrow + supporting copy below the image */}
       <div className="mx-auto max-w-xl px-4 py-8 text-center md:py-10">
         <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#e8c877] md:text-xs md:tracking-[0.25em]">
-          100% Cold-Pressed · 18+ Qudrati Oils
+          100% Cold-Pressed · 18+ Natural Oils
         </p>
         <p className="mt-4 text-[15px] leading-relaxed text-white/85 md:text-base">
-          Cold-press ka qudrati power — 18+ oils ka khaas blend, lambe, mazboot aur chamakdar
-          baalon ke liye.
+          Cold-pressed natural power — a special blend of 18+ oils for long, strong, shiny
+          hair.
         </p>
       </div>
     </section>

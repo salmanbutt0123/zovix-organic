@@ -7,8 +7,8 @@ export default function WhatsAppFloat() {
       href={`https://wa.me/${WA_NUMBER}?text=${WA_TEXT}`}
       target="_blank"
       rel="noreferrer"
-      aria-label="WhatsApp par order karein"
-      title="WhatsApp par order karein"
+      aria-label="Order on WhatsApp"
+      title="Order on WhatsApp"
       className="fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25d366] text-white shadow-xl transition-transform duration-200 hover:scale-105"
     >
       <span

@@ -2,24 +2,24 @@ import { useState } from "react";
 
 const FAQS = [
   {
-    q: "Delivery mein kitna waqt lagta hai?",
-    a: "Aam tor par Pakistan bhar mein 2–4 working days.",
+    q: "How long does delivery take?",
+    a: "Usually 2–4 working days across Pakistan.",
   },
   {
-    q: "Kya Cash on Delivery available hai?",
-    a: "Jee haan. Parcel milne par cash mein payment karein.",
+    q: "Is Cash on Delivery available?",
+    a: "Yes. Pay in cash when your parcel arrives.",
   },
   {
-    q: "Ye kin baalon ke liye hai?",
-    a: "ZOVIX tamam hair types ki routine care mein istemaal ho sakta hai. Pehli dafa istemaal se pehle patch-test zaroor karein.",
+    q: "Which hair types is it for?",
+    a: "ZOVIX can be used for routine care of all hair types. Always patch-test before first use.",
   },
   {
-    q: "Order kaise karein?",
-    a: "WhatsApp order button dabayein ya website form mein apni details likhein.",
+    q: "How do I order?",
+    a: "Tap the WhatsApp order button or enter your details in the website form.",
   },
   {
-    q: "Agar parcel toota-phoota aaye to?",
-    a: "Unboxing video ya wazeh tasveer bhej dein — toota-phoota parcel muft replace hoga.",
+    q: "What if my parcel arrives damaged?",
+    a: "Send an unboxing video or a clear photo — a damaged parcel will be replaced free.",
   },
 ];
 
@@ -29,14 +29,14 @@ export default function Faq() {
     <section id="faq" className="bg-white py-14">
       <div className="mx-auto max-w-3xl px-4">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#8f6a1f]">
-          Aam sawalat
+          Common questions
         </p>
         <h2 className="font-serif mt-3 text-3xl font-medium md:text-4xl">
-          Order karne se pehle jaan lein.
+          Know before you order.
         </h2>
         <p className="mt-3 text-sm text-[#5c4f3d]">
-          Sirf bahar se lagane ke liye. Pehli dafa istemaal se pehle patch-test karein. Agar jalan
-          ho to istemaal rok dein. Nataij har shakhs ke liye mukhtalif ho sakte hain.
+          For external use only. Patch-test before first use. Stop use if irritation occurs. Results
+          may vary from person to person.
         </p>
         <div className="mt-8 divide-y divide-[#e8dfcd] rounded-2xl border border-[#e8dfcd] bg-[#faf7f1]">
           {FAQS.map((f, i) => (

@@ -9,18 +9,18 @@ export default function FinalCta() {
             FREE delivery · Cash on Delivery
           </p>
           <h2 className="font-serif mt-3 text-3xl font-medium md:text-4xl">
-            Apne baalon ko qudrati dekhbhal dein.
+            Give your hair natural care.
           </h2>
           <p className="mt-4 text-white/70">
-            ZOVIX Organic Hair Oil — sirf Rs 1,600, bilkul FREE delivery ke saath.
+            ZOVIX Organic Hair Oil — only Rs 1,600, with completely FREE delivery.
           </p>
-          <p className="mt-1 text-sm text-white/50">Button dabayein aur apna naam aur pata bhej dein.</p>
+          <p className="mt-1 text-sm text-white/50">Tap the button and send your name and address.</p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <a
               href="#order"
               className="rounded-full bg-[#b98a2f] px-8 py-3 font-semibold text-white transition-colors hover:bg-[#8f6a1f]"
             >
-              Order Karein — Rs 1,600
+              Order Now — Rs 1,600
             </a>
             <a
               href={`https://wa.me/923059014270?text=${encodeURIComponent(

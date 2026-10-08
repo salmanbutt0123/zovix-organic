@@ -29,12 +29,12 @@ export default function OrderForm() {
     e.preventDefault();
     const cleanPhone = normalizePhone(phone);
     if (!name.trim() || !cleanPhone || !address.trim() || !city.trim()) {
-      setErrorMsg("Apna naam, phone, pata aur sheher zaroor likhein.");
+      setErrorMsg("Please enter your name, phone, address and city.");
       setStatus("error");
       return;
     }
     if (!/^03\d{9}$/.test(cleanPhone)) {
-      setErrorMsg("Apna 11-hindson ka mobile number theek likhein (03xx-xxxxxxx).");
+      setErrorMsg("Please enter a valid 11-digit mobile number (03xx-xxxxxxx).");
       setStatus("error");
       return;
     }
@@ -49,7 +49,7 @@ export default function OrderForm() {
       _quantity: qty,
     });
     if (error) {
-      setErrorMsg("Aapka order save nahi ho saka. Dobara try karein ya WhatsApp par order karein.");
+      setErrorMsg("Your order could not be saved. Please try again or order on WhatsApp.");
       setStatus("error");
     } else {
       setStatus("done");
@@ -60,37 +60,36 @@ export default function OrderForm() {
     <section id="order" className="bg-[#faf7f1] py-14">
       <div className="mx-auto max-w-3xl px-4">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#8f6a1f]">
-          Aapke darwaze tak
+          To your doorstep
         </p>
-        <h2 className="font-serif mt-3 text-3xl font-medium md:text-4xl">Website se order karein.</h2>
+        <h2 className="font-serif mt-3 text-3xl font-medium md:text-4xl">Order from the website.</h2>
         <p className="mt-3 max-w-xl text-[15px] text-[#5c4f3d]">
-          Apni details ek dafa likhein. Hum aapka order save kar ke confirm karne ke liye rabta
-          karein ge.
+          Enter your details once. We&apos;ll save your order and contact you to confirm.
         </p>
-        <p className="mt-2 text-sm text-[#5c4f3d]">100 ml · Rs 1,600 (1 bottle) · neeche bundles dekhein</p>
+        <p className="mt-2 text-sm text-[#5c4f3d]">100 ml · Rs 1,600 (1 bottle) · see bundles below</p>
         <p className="mt-1 text-sm font-medium text-[#4a5d3a]">
-          Pure Pakistan mein FREE delivery · Cash on Delivery
+          FREE delivery across Pakistan · Cash on Delivery
         </p>
 
         {status === "done" ? (
           <div className="mt-8 rounded-2xl bg-[#4a5d3a] p-8 text-center text-white">
-            <p className="font-serif text-2xl font-semibold">Shukriya, {name.split(" ")[0]}!</p>
+            <p className="font-serif text-2xl font-semibold">Thank you, {name.split(" ")[0]}!</p>
             <p className="mt-3">
-              Aapka order ({bundleLabel(qty)} — Rs {price.toLocaleString("en-PK")}) save ho gaya
-              hai. Hum jald confirm karne ke liye rabta karein ge.
+              Your order ({bundleLabel(qty)} — Rs {price.toLocaleString("en-PK")}) has been saved.
+              We&apos;ll contact you shortly to confirm.
             </p>
             <p className="mt-2 text-sm text-white/70">Cash on Delivery · FREE delivery</p>
           </div>
         ) : (
           <form onSubmit={submit} className="mt-8 rounded-2xl border border-[#e8dfcd] bg-white p-6 shadow-sm md:p-8">
             <div className="grid gap-4 md:grid-cols-2">
-              <input className={inputCls} placeholder="Aapka naam" value={name} onChange={(e) => setName(e.target.value)} />
+              <input className={inputCls} placeholder="Your name" value={name} onChange={(e) => setName(e.target.value)} />
               <input className={inputCls} inputMode="tel" autoComplete="tel" placeholder="Phone number (03xx-xxxxxxx)" value={phone} onChange={(e) => setPhone(e.target.value)} />
             </div>
-            <input className={`${inputCls} mt-4`} placeholder="Mukammal pata" value={address} onChange={(e) => setAddress(e.target.value)} />
+            <input className={`${inputCls} mt-4`} placeholder="Complete address" value={address} onChange={(e) => setAddress(e.target.value)} />
             <div className="mt-4 grid gap-4 md:grid-cols-2">
-              <input className={inputCls} placeholder="Sheher" value={city} onChange={(e) => setCity(e.target.value)} />
-              <input className={inputCls} placeholder="Koi khaas note? (optional)" value={note} onChange={(e) => setNote(e.target.value)} />
+              <input className={inputCls} placeholder="City" value={city} onChange={(e) => setCity(e.target.value)} />
+              <input className={inputCls} placeholder="Any special note? (optional)" value={note} onChange={(e) => setNote(e.target.value)} />
             </div>
 
             <div className="mt-6 flex items-center justify-between rounded-xl bg-[#faf7f1] p-4">
@@ -128,10 +127,10 @@ export default function OrderForm() {
               disabled={status === "sending"}
               className="mt-6 w-full rounded-full bg-[#b98a2f] py-4 text-lg font-semibold text-white transition-colors hover:bg-[#8f6a1f] disabled:opacity-60"
             >
-              {status === "sending" ? "Order save ho raha hai…" : "Order Confirm Karein"}
+              {status === "sending" ? "Saving your order…" : "Confirm Order"}
             </button>
             <p className="mt-3 text-center text-xs text-[#8f6a1f]">
-              Parcel milne par payment karein — Cash on Delivery
+              Pay when your parcel arrives — Cash on Delivery
             </p>
           </form>
         )}
