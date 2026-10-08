@@ -4,6 +4,15 @@ import { BUNDLE_PRICING, bundleLabel, supabase } from "../lib/supabase";
 const inputCls =
   "w-full rounded-xl border border-[#e8dfcd] bg-white px-4 py-3 text-[15px] text-[#2b2118] placeholder-[#a89a7d] focus:border-[#b98a2f] focus:outline-none";
 
+// Normalize a typed Pakistani mobile number to the plain 11-digit form the
+// order database accepts: strips spaces/dashes, converts +92 / 0092 to 0.
+function normalizePhone(raw: string): string {
+  const digits = raw.replace(/\D/g, "");
+  if (digits.startsWith("0092") && digits.length === 14) return "0" + digits.slice(4);
+  if (digits.startsWith("92") && digits.length === 12) return "0" + digits.slice(2);
+  return digits;
+}
+
 export default function OrderForm() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -18,8 +27,14 @@ export default function OrderForm() {
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
-    if (!name.trim() || !phone.trim() || !address.trim() || !city.trim()) {
+    const cleanPhone = normalizePhone(phone);
+    if (!name.trim() || !cleanPhone || !address.trim() || !city.trim()) {
       setErrorMsg("Apna naam, phone, pata aur sheher zaroor likhein.");
+      setStatus("error");
+      return;
+    }
+    if (!/^03\d{9}$/.test(cleanPhone)) {
+      setErrorMsg("Apna 11-hindson ka mobile number theek likhein (03xx-xxxxxxx).");
       setStatus("error");
       return;
     }
@@ -27,7 +42,7 @@ export default function OrderForm() {
     setErrorMsg("");
     const { error } = await supabase.rpc("place_order", {
       _customer_name: name.trim(),
-      _phone: phone.trim(),
+      _phone: cleanPhone,
       _address: address.trim(),
       _city: city.trim(),
       _note: note.trim() || null,
@@ -70,7 +85,7 @@ export default function OrderForm() {
           <form onSubmit={submit} className="mt-8 rounded-2xl border border-[#e8dfcd] bg-white p-6 shadow-sm md:p-8">
             <div className="grid gap-4 md:grid-cols-2">
               <input className={inputCls} placeholder="Aapka naam" value={name} onChange={(e) => setName(e.target.value)} />
-              <input className={inputCls} placeholder="Phone number (03xx-xxxxxxx)" value={phone} onChange={(e) => setPhone(e.target.value)} />
+              <input className={inputCls} inputMode="tel" autoComplete="tel" placeholder="Phone number (03xx-xxxxxxx)" value={phone} onChange={(e) => setPhone(e.target.value)} />
             </div>
             <input className={`${inputCls} mt-4`} placeholder="Mukammal pata" value={address} onChange={(e) => setAddress(e.target.value)} />
             <div className="mt-4 grid gap-4 md:grid-cols-2">
