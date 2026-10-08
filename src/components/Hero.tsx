@@ -17,12 +17,11 @@ export default function Hero() {
         {/* Legibility scrim for the overlaid text */}
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-black/75 via-black/30 to-transparent" />
 
-        {/* Headline + shop button overlaid on the image, Vegamour-style */}
-        <div className="absolute inset-x-0 bottom-0 px-6 pb-8 text-center md:pb-14">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#e8c877] md:text-xs md:tracking-[0.25em]">
-            100% Cold-Pressed · 18+ Qudrati Oils
-          </p>
-          <h1 className="font-serif mt-4 text-4xl font-medium leading-[1.05] text-white md:text-7xl">
+        {/* Headline + shop button overlaid on the image, Vegamour-style.
+            The eyebrow line lives below the image so no small text clashes
+            with the packaging's own label. */}
+        <div className="absolute inset-x-0 bottom-0 px-6 pb-8 text-center md:pb-12">
+          <h1 className="font-serif text-4xl font-medium leading-[1.05] text-white md:text-7xl">
             Not your ordinary formula
           </h1>
           <a
@@ -34,9 +33,12 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Supporting copy below the image */}
+      {/* Eyebrow + supporting copy below the image */}
       <div className="mx-auto max-w-xl px-4 py-8 text-center md:py-10">
-        <p className="text-[15px] leading-relaxed text-white/85 md:text-base">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#e8c877] md:text-xs md:tracking-[0.25em]">
+          100% Cold-Pressed · 18+ Qudrati Oils
+        </p>
+        <p className="mt-4 text-[15px] leading-relaxed text-white/85 md:text-base">
           Cold-press ka qudrati power — 18+ oils ka khaas blend, lambe, mazboot aur chamakdar
           baalon ke liye.
         </p>
