@@ -11,6 +11,7 @@ import HowToUse from "./components/HowToUse";
 import Ingredients from "./components/Ingredients";
 import Navbar from "./components/Navbar";
 import OrderForm from "./components/OrderForm";
+import WhatsAppFloat from "./components/WhatsAppFloat";
 
 export default function App() {
   const [route, setRoute] = useState(window.location.hash);
@@ -45,6 +46,7 @@ export default function App() {
         <DeliveryPolicy />
         <FinalCta />
       </main>
+      <WhatsAppFloat />
     </div>
   );
 }
