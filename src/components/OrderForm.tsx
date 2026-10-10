@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { BUNDLE_PRICING, bundleLabel, supabase } from "../lib/supabase";
+import Turnstile, { isTurnstileEnabled } from "./Turnstile";
 
 const inputCls =
   "w-full rounded-xl border border-[#e8dfcd] bg-white px-4 py-3 text-[15px] text-[#2b2118] placeholder-[#a89a7d] focus:border-[#b98a2f] focus:outline-none";
@@ -22,24 +23,53 @@ export default function OrderForm() {
   const [qty, setQty] = useState(1);
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const [captchaKey, setCaptchaKey] = useState(0);
 
   const price = BUNDLE_PRICING[qty];
+
+  function fail(msg: string) {
+    setErrorMsg(msg);
+    setStatus("error");
+    // Captcha tokens are single-use — reset the widget so the user gets a fresh one.
+    setCaptchaToken(null);
+    setCaptchaKey((k) => k + 1);
+  }
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     const cleanPhone = normalizePhone(phone);
     if (!name.trim() || !cleanPhone || !address.trim() || !city.trim()) {
-      setErrorMsg("Please enter your name, phone, address and city.");
-      setStatus("error");
+      fail("Please enter your name, phone, address and city.");
       return;
     }
     if (!/^03\d{9}$/.test(cleanPhone)) {
-      setErrorMsg("Please enter a valid 11-digit mobile number (03xx-xxxxxxx).");
-      setStatus("error");
+      fail("Please enter a valid 11-digit mobile number (03xx-xxxxxxx).");
+      return;
+    }
+    if (isTurnstileEnabled() && !captchaToken) {
+      fail("Please complete the captcha check below, then confirm your order.");
       return;
     }
     setStatus("sending");
     setErrorMsg("");
+    if (isTurnstileEnabled()) {
+      try {
+        const verify = await fetch("/api/verify-turnstile", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ token: captchaToken }),
+        });
+        const result = await verify.json();
+        if (!result.success) {
+          fail("Captcha check failed. Please try again.");
+          return;
+        }
+      } catch {
+        fail("Captcha check failed. Please try again.");
+        return;
+      }
+    }
     const { error } = await supabase.rpc("place_order", {
       _customer_name: name.trim(),
       _phone: cleanPhone,
@@ -49,8 +79,7 @@ export default function OrderForm() {
       _quantity: qty,
     });
     if (error) {
-      setErrorMsg("Your order could not be saved. Please try again or order on WhatsApp.");
-      setStatus("error");
+      fail("Your order could not be saved. Please try again or order on WhatsApp.");
     } else {
       setStatus("done");
     }
@@ -121,6 +150,8 @@ export default function OrderForm() {
             </div>
 
             {status === "error" && <p className="mt-4 text-sm font-medium text-red-700">{errorMsg}</p>}
+
+            <Turnstile key={captchaKey} onToken={setCaptchaToken} />
 
             <button
               type="submit"

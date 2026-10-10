@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zovix-organic.vercel.app/sitemap.xml
