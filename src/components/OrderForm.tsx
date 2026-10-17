@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BUNDLE_PRICING, bundleLabel, supabase } from "../lib/supabase";
+import { BUNDLE_PRICING, DELIVERY_FEE, bundleLabel, supabase } from "../lib/supabase";
 import Turnstile, { isTurnstileEnabled } from "./Turnstile";
 
 const inputCls =
@@ -95,19 +95,19 @@ export default function OrderForm() {
         <p className="mt-3 max-w-xl text-[15px] text-[#5c4f3d]">
           Enter your details once. We&apos;ll save your order and contact you to confirm.
         </p>
-        <p className="mt-2 text-sm text-[#5c4f3d]">100 ml · Rs 1,600 (1 bottle) · see bundles below</p>
+        <p className="mt-2 text-sm text-[#5c4f3d]">100 ml · Rs 1,499 (1 bottle) · see bundles below</p>
         <p className="mt-1 text-sm font-medium text-[#4a5d3a]">
-          FREE delivery across Pakistan · Cash on Delivery
+          Rs 250 delivery charges · Cash on Delivery
         </p>
 
         {status === "done" ? (
           <div className="mt-8 rounded-2xl bg-[#4a5d3a] p-8 text-center text-white">
             <p className="font-serif text-2xl font-semibold">Thank you, {name.split(" ")[0]}!</p>
             <p className="mt-3">
-              Your order ({bundleLabel(qty)} — Rs {price.toLocaleString("en-PK")}) has been saved.
-              We&apos;ll contact you shortly to confirm.
+              Your order ({bundleLabel(qty)} — Rs {(price + DELIVERY_FEE).toLocaleString("en-PK")}{" "}
+              including delivery) has been saved. We&apos;ll contact you shortly to confirm.
             </p>
-            <p className="mt-2 text-sm text-white/70">Cash on Delivery · FREE delivery</p>
+            <p className="mt-2 text-sm text-white/70">Cash on Delivery · Rs 250 delivery</p>
           </div>
         ) : (
           <form onSubmit={submit} className="mt-8 rounded-2xl border border-[#e8dfcd] bg-white p-6 shadow-sm md:p-8">
@@ -126,6 +126,10 @@ export default function OrderForm() {
                 <p className="text-sm font-semibold">{bundleLabel(qty)}</p>
                 <p className="font-serif text-2xl font-semibold text-[#b98a2f]">
                   Rs {price.toLocaleString("en-PK")}
+                </p>
+                <p className="mt-1 text-sm text-[#5c4f3d]">
+                  + Rs {DELIVERY_FEE.toLocaleString("en-PK")} delivery = Rs{" "}
+                  {(price + DELIVERY_FEE).toLocaleString("en-PK")} total
                 </p>
               </div>
               <div className="flex items-center gap-3">

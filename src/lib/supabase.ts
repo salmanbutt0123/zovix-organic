@@ -15,10 +15,12 @@ export const WHATSAPP_NUMBER = "03059014270";
 export const WHATSAPP_DISPLAY = "0305 9014270";
 
 export const BUNDLE_PRICING: Record<number, number> = {
-  1: 1600,
-  2: 3000,
-  3: 4200,
+  1: 1499,
+  2: 2999,
+  3: 4499,
 };
+
+export const DELIVERY_FEE = 250;
 
 export function bundleLabel(qty: number): string {
   if (qty === 1) return "1 Bottle";

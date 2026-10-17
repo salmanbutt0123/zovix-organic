@@ -3,22 +3,22 @@ const BUNDLES = [
   {
     tag: "Launch bundle",
     title: "1 Bottle",
-    price: "Rs 1,600",
+    price: "Rs 1,499",
     note: "Single bottle",
     highlight: false,
   },
   {
     tag: "Most popular",
     title: "2 Bottles",
-    price: "Rs 3,000",
-    note: "Save Rs 200",
+    price: "Rs 2,999",
+    note: "2 bottles",
     highlight: true,
   },
   {
     tag: "Launch bundle",
     title: "Family Pack",
-    price: "Rs 4,200",
-    note: "3 bottles · Save Rs 600",
+    price: "Rs 4,499",
+    note: "3 bottles",
     highlight: false,
   },
 ];
@@ -34,7 +34,7 @@ export default function Bundles() {
             </p>
             <h2 className="font-serif mt-3 text-3xl font-medium md:text-4xl">Choose your pack.</h2>
             <p className="mt-3 text-[15px] text-[#5c4f3d]">
-              FREE delivery and Cash on Delivery on every pack.
+              Rs 250 delivery charges and Cash on Delivery on every pack.
             </p>
             <div className="mt-8 grid gap-4 sm:grid-cols-3">
               {BUNDLES.map((b) => (
