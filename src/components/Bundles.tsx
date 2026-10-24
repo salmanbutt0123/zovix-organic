@@ -1,29 +1,33 @@
+import { useState } from "react";
 import bundleImg from "../assets/zovix-bundle.webp";
+import { BUNDLE_PRICING, type BottleSize } from "../lib/supabase";
+import SizePills from "./SizePills";
 const BUNDLES = [
   {
     tag: "Launch bundle",
     title: "1 Bottle",
-    price: "Rs 1,499",
+    qty: 1,
     note: "Single bottle",
     highlight: false,
   },
   {
     tag: "Most popular",
     title: "2 Bottles",
-    price: "Rs 2,999",
+    qty: 2,
     note: "2 bottles",
     highlight: true,
   },
   {
     tag: "Launch bundle",
     title: "Family Pack",
-    price: "Rs 4,499",
+    qty: 3,
     note: "3 bottles",
     highlight: false,
   },
 ];
 
 export default function Bundles() {
+  const [size, setSize] = useState<BottleSize>("100ml");
   return (
     <section id="bundles" className="bg-white py-14">
       <div className="mx-auto max-w-6xl px-4">
@@ -36,11 +40,14 @@ export default function Bundles() {
             <p className="mt-3 text-[15px] text-[#5c4f3d]">
               Rs 250 delivery charges and Cash on Delivery on every pack.
             </p>
-            <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            <div className="mt-6">
+              <SizePills size={size} onChange={setSize} />
+            </div>
+            <div className="mt-6 grid gap-4 sm:grid-cols-3">
               {BUNDLES.map((b) => (
                 <div
-                  key={b.title}
-                  className={`rounded-2xl border p-6 text-center ${
+                  key={b.qty}
+                  className={`rounded-2xl border p-6 text-center transition-colors duration-300 ${
                     b.highlight
                       ? "border-[#b98a2f] bg-[#2b2118] text-white shadow-xl"
                       : "border-[#e8dfcd] bg-[#faf7f1]"
@@ -53,8 +60,15 @@ export default function Bundles() {
                   >
                     {b.tag}
                   </span>
-                  <h3 className="font-serif mt-3 text-xl font-semibold">{b.title}</h3>
-                  <p className="font-serif mt-1 text-2xl font-semibold text-[#b98a2f]">{b.price}</p>
+                  <h3 className="font-serif mt-3 text-xl font-semibold">
+                    {b.title} · {size === "150ml" ? "150 ml" : "100 ml"}
+                  </h3>
+                  <p
+                    key={`${size}-${b.qty}`}
+                    className="font-serif price-pop mt-1 text-2xl font-semibold text-[#b98a2f]"
+                  >
+                    Rs {BUNDLE_PRICING[size][b.qty].toLocaleString("en-PK")}
+                  </p>
                   <p className={`mt-1 text-sm ${b.highlight ? "text-white/70" : "text-[#5c4f3d]"}`}>
                     {b.note}
                   </p>

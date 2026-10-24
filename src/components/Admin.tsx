@@ -9,6 +9,7 @@ type Order = {
   city: string;
   note: string | null;
   quantity: number;
+  bottle_size?: string;
   total_price?: number;
   status?: string;
   created_at: string;
@@ -97,6 +98,7 @@ export default function Admin() {
               <th className="px-4 py-3">Phone</th>
               <th className="px-4 py-3">City</th>
               <th className="px-4 py-3">Qty</th>
+              <th className="px-4 py-3">Size</th>
               <th className="px-4 py-3">Address</th>
               <th className="px-4 py-3">Note</th>
             </tr>
@@ -111,13 +113,22 @@ export default function Admin() {
                 <td className="px-4 py-3">{o.phone}</td>
                 <td className="px-4 py-3">{o.city}</td>
                 <td className="px-4 py-3">{o.quantity}</td>
+                <td className="px-4 py-3 whitespace-nowrap">
+                  {o.bottle_size === "150ml" ? (
+                    <span className="rounded-full bg-[#b98a2f]/15 px-2.5 py-1 text-xs font-bold text-[#8f6a1f]">
+                      150 ml
+                    </span>
+                  ) : (
+                    "100 ml"
+                  )}
+                </td>
                 <td className="px-4 py-3">{o.address}</td>
                 <td className="px-4 py-3">{o.note ?? "—"}</td>
               </tr>
             ))}
             {orders.length === 0 && (
               <tr>
-                <td colSpan={7} className="px-4 py-8 text-center text-[#8f6a1f]">
+                <td colSpan={8} className="px-4 py-8 text-center text-[#8f6a1f]">
                   Koi orders nahi mile — ya to abhi koi order nahi aaya, ya is login ko access nahi.
                 </td>
               </tr>

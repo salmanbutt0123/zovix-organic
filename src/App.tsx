@@ -11,6 +11,7 @@ import HowToUse from "./components/HowToUse";
 import Ingredients from "./components/Ingredients";
 import Navbar from "./components/Navbar";
 import OrderForm from "./components/OrderForm";
+import Reveal from "./components/Reveal";
 import WhatsAppFloat from "./components/WhatsAppFloat";
 
 export default function App() {
@@ -36,15 +37,15 @@ export default function App() {
       <AnnouncementBar />
       <Navbar />
       <main>
-        <Hero />
-        <Benefits />
-        <Bundles />
-        <OrderForm />
-        <Faq />
-        <Ingredients />
-        <HowToUse />
-        <DeliveryPolicy />
-        <FinalCta />
+        <Reveal><Hero /></Reveal>
+        <Reveal><Benefits /></Reveal>
+        <Reveal><Bundles /></Reveal>
+        <Reveal><OrderForm /></Reveal>
+        <Reveal><Faq /></Reveal>
+        <Reveal><Ingredients /></Reveal>
+        <Reveal><HowToUse /></Reveal>
+        <Reveal><DeliveryPolicy /></Reveal>
+        <Reveal><FinalCta /></Reveal>
       </main>
       <WhatsAppFloat />
     </div>

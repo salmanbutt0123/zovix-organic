@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { BUNDLE_PRICING, DELIVERY_FEE, bundleLabel, supabase } from "../lib/supabase";
+import { BUNDLE_PRICING, DELIVERY_FEE, bundleLabel, supabase, type BottleSize } from "../lib/supabase";
 import Turnstile, { isTurnstileEnabled } from "./Turnstile";
+import SizePills from "./SizePills";
 
 const inputCls =
   "w-full rounded-xl border border-[#e8dfcd] bg-white px-4 py-3 text-[15px] text-[#2b2118] placeholder-[#a89a7d] focus:border-[#b98a2f] focus:outline-none";
@@ -21,12 +22,13 @@ export default function OrderForm() {
   const [city, setCity] = useState("");
   const [note, setNote] = useState("");
   const [qty, setQty] = useState(1);
+  const [size, setSize] = useState<BottleSize>("100ml");
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const [captchaKey, setCaptchaKey] = useState(0);
 
-  const price = BUNDLE_PRICING[qty];
+  const price = BUNDLE_PRICING[size][qty];
 
   function fail(msg: string) {
     setErrorMsg(msg);
@@ -77,6 +79,7 @@ export default function OrderForm() {
       _city: city.trim(),
       _note: note.trim() || null,
       _quantity: qty,
+      _bottle_size: size,
     });
     if (error) {
       fail("Your order could not be saved. Please try again or order on WhatsApp.");
@@ -95,16 +98,23 @@ export default function OrderForm() {
         <p className="mt-3 max-w-xl text-[15px] text-[#5c4f3d]">
           Enter your details once. We&apos;ll save your order and contact you to confirm.
         </p>
-        <p className="mt-2 text-sm text-[#5c4f3d]">100 ml · Rs 1,499 (1 bottle) · see bundles below</p>
+        <p className="mt-2 text-sm text-[#5c4f3d]">
+          {size === "150ml" ? "150 ml" : "100 ml"} · Rs{" "}
+          {BUNDLE_PRICING[size][1].toLocaleString("en-PK")} (1 bottle) · see bundles below
+        </p>
         <p className="mt-1 text-sm font-medium text-[#4a5d3a]">
           Rs 250 delivery charges · Cash on Delivery
         </p>
+
+        <div className="mt-5">
+          <SizePills size={size} onChange={setSize} />
+        </div>
 
         {status === "done" ? (
           <div className="mt-8 rounded-2xl bg-[#4a5d3a] p-8 text-center text-white">
             <p className="font-serif text-2xl font-semibold">Thank you, {name.split(" ")[0]}!</p>
             <p className="mt-3">
-              Your order ({bundleLabel(qty)} — Rs {(price + DELIVERY_FEE).toLocaleString("en-PK")}{" "}
+              Your order ({bundleLabel(qty, size)} — Rs {(price + DELIVERY_FEE).toLocaleString("en-PK")}{" "}
               including delivery) has been saved. We&apos;ll contact you shortly to confirm.
             </p>
             <p className="mt-2 text-sm text-white/70">Cash on Delivery · Rs 250 delivery</p>
@@ -123,8 +133,11 @@ export default function OrderForm() {
 
             <div className="mt-6 flex items-center justify-between rounded-xl bg-[#faf7f1] p-4">
               <div>
-                <p className="text-sm font-semibold">{bundleLabel(qty)}</p>
-                <p className="font-serif text-2xl font-semibold text-[#b98a2f]">
+                <p className="text-sm font-semibold">{bundleLabel(qty, size)}</p>
+                <p
+                  key={`${size}-${qty}`}
+                  className="font-serif price-pop text-2xl font-semibold text-[#b98a2f]"
+                >
                   Rs {price.toLocaleString("en-PK")}
                 </p>
                 <p className="mt-1 text-sm text-[#5c4f3d]">
