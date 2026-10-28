@@ -28,7 +28,7 @@ export default function Footer() {
 
   return (
     <footer className="border-t border-[#e8dfcd] bg-[#2b2118] text-white">
-      <div className="mx-auto max-w-6xl px-4 py-10">
+      <div className="mx-auto max-w-6xl px-4 pb-28 pt-10 sm:pb-10">
         <div className="flex flex-wrap items-start justify-between gap-8">
           <div>
             <p className="font-serif text-2xl font-semibold">

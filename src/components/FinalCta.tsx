@@ -35,14 +35,6 @@ export default function FinalCta() {
           </div>
         </div>
       </section>
-      <footer className="border-t border-[#e8dfcd] bg-[#faf7f1] py-8">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 text-sm text-[#8f6a1f] md:flex-row">
-          <p className="font-serif text-lg font-semibold text-[#2b2118]">
-            Zovix <span className="text-[#b98a2f]">Organic</span>
-          </p>
-          <p>© 2026 Zovix Organic · WhatsApp {WHATSAPP_DISPLAY}</p>
-        </div>
-      </footer>
     </>
   );
 }
