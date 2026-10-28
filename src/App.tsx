@@ -6,6 +6,7 @@ import Bundles from "./components/Bundles";
 import DeliveryPolicy from "./components/DeliveryPolicy";
 import Faq from "./components/Faq";
 import FinalCta from "./components/FinalCta";
+import Footer from "./components/Footer";
 import Hero from "./components/Hero";
 import HowToUse from "./components/HowToUse";
 import Ingredients from "./components/Ingredients";
@@ -47,6 +48,7 @@ export default function App() {
         <Reveal><DeliveryPolicy /></Reveal>
         <Reveal><FinalCta /></Reveal>
       </main>
+      <Footer />
       <WhatsAppFloat />
     </div>
   );

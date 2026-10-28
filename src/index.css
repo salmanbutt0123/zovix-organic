@@ -53,6 +53,48 @@ body {
   animation: price-pop 0.32s ease;
 }
 
+/* Hero entrance: badge, button, headline and copy rise in, staggered, once on load. */
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.hero-rise {
+  opacity: 0;
+  animation: hero-rise 0.7s ease forwards;
+}
+
+/* Footer legal modal: backdrop fades, panel rises slightly. */
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes backdrop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.modal-panel {
+  animation: modal-in 0.25s ease;
+}
+.modal-backdrop {
+  animation: backdrop-in 0.2s ease;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     opacity: 1;
@@ -61,5 +103,12 @@ body {
   }
   .price-pop {
     animation: none;
+  }
+  .hero-rise,
+  .modal-panel,
+  .modal-backdrop {
+    animation: none;
+    opacity: 1;
+    transform: none;
   }
 }
